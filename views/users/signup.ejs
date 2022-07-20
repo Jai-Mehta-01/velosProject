@@ -1,0 +1,63 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="../stylesheet/signup.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Up</title>
+<body>
+  
+</body>
+<div class="login-box">
+  <div class="container">
+    <% if(success && success.length){ %> 
+      <div class="alert alert-success alert-dismissible fade show mt-3 row" role="alert">
+          <strong><%= success %> </strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% } %> 
+      
+      <% if(error && error.length){ %> 
+      <div class=" alert alert-danger alert-dismissible fade show mt-3 row" role="alert">
+          <strong><%= error %> </strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% } %>
+  </div>
+  <form class="screen-1" action="/signup" method="post" novalidate class="validation">
+  <a href="/"><img src="../images/velos_logo-removebg.png" class="logo"></a>
+    <div class="username">
+    <label for="username">Username</label>
+    <div class="sec-2">
+        <i class="fa fa-user"></i>
+      <input type="text" name="username" placeholder="Username" required/>
+    </div>
+	</div>
+    <div class="email">
+    <label for="email">Email Address</label>
+    <div class="sec-2">
+        <i class="fa fa-envelope"></i>
+      <input type="email" name="email" placeholder="Username@gmail.com" required/>
+    </div>
+	</div>
+    <div class="phoneNo">
+    <label for="phoneNo">Phone Number</label>
+    <div class="sec-2">
+        <i class="fa fa-phone"></i>
+      <input type="tel" name="phoneNo" placeholder="1234567890"/>
+    </div>
+	</div>
+	<div class="password">
+		<label for="password">Password</label>
+		<div class="sec-2">
+			<i class="fa fa-lock"></i>
+			<input class="pas" type="password" name="password" placeholder="············" required/>
+		</div>
+	</div>
+  <button class="login">Sign Up</button>
+  <a href="/auth/google"><button class="login btn btn-primary" style="background-color: #dd4b39;" type="button" role="button">
+            <i class="fa fa-google"></i>  Sign in with google</button></a>
+  <div class="footer"><a href="/login"><span class="login-span">Login</span></a></div>
+
+  </form>
+</div>

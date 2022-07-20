@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body .outerContainer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+body .outerContainer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 40px 0;
+}
+
+body .outerContainer .container .card {
+    position: relative;
+    min-width: 320px;
+    height: 440px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 30px;
+    transition: 0.5s;
+    background-color: violet;
+}
+
+body .outerContainer .container .card:nth-child(1) .box .content .totp {
+    background: #2196f3;
+}
+
+body .outerContainer .container .card:nth-child(2) .box .content .totp {
+    background: #e91e63;
+}
+
+body .outerContainer .container .card:nth-child(3) .box .content .totp {
+    background: #23c186;
+}
+
+body .outerContainer .container .card .box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #2a2b2f;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+body .outerContainer .container .card .box:hover {
+    transform: translateY(-50px);
+}
+
+body .outerContainer .container .card .box:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+body .outerContainer .container .card .box .content {
+    padding: 20px;
+    text-align: center;
+}
+
+body .outerContainer .container .card .box .content h2 {
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+body .outerContainer .container .card .box .content h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    z-index: 1;
+    transition: 0.5s;
+    margin-bottom: 15px;
+}
+
+body .outerContainer .container .card .box .content p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.totp {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+body .outerContainer .container .card .box .content a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+body .outerContainer .container .card .box .content a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    background: #fff;
+    color: #000;
+}
+
+.timer {
+    background: -webkit-linear-gradient(left, skyBlue 50%, #eee 50%);
+    border-radius: 100%;
+    height: calc(var(--size) * 1px);
+    width: calc(var(--size) * 1px);
+    position: relative;
+    -webkit-animation: time calc(var(--duration) * 1s) steps(1000, start) infinite;
+    -webkit-mask: radial-gradient(transparent 50%, #000 50%);
+    mask: radial-gradient(transparent 50%, #000 50%);
+}
+
+.mask {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    -webkit-animation: mask calc(var(--duration) * 1s) steps(500, start) infinite;
+    -webkit-transform-origin: 100% 50%;
+}
+
+@-webkit-keyframes time {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes mask {
+    0% {
+        background: #eee;
+        -webkit-transform: rotate(0deg);
+    }
+
+    50% {
+        background: #eee;
+        -webkit-transform: rotate(-180deg);
+    }
+
+    50.01% {
+        background: skyBlue;
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        background: skyBlue;
+        -webkit-transform: rotate(-180deg);
+    }
+}

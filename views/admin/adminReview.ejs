@@ -1,0 +1,97 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Catalogue</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../stylesheet/othernav.css">
+  <link rel="stylesheet" href="../stylesheet/catalogueForm.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light mb-auto">
+    <div class="container-fluid cover-container">
+      <a class="navbar-brand brand-response" href="/">Velos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/">Home</a>
+          
+            <a class="nav-link" href="/catalogue">Catalogue</a>
+            
+              <% if(!currentUser){%>
+                <a class="nav-link " href="/login">Login</a>
+                <a class="nav-link " href="/login">Sign Up</a>
+                <% }else{ %>
+                      <% if(currentUser){ %>
+                        <% if(!currentUser.isAdministrator ){ %>
+                          <a class="nav-link " href="/hostCycle">Host Cycle</a>
+                          <br>
+                          <% } %>
+                            <% if(currentUser.isAdministrator ){ %>
+                              <a class="nav-link " href="/adminCycle">Admin Cycles</a>
+                              <br>
+                              <a class="nav-link " href="/adminUpdate">AdminUpdate</a>
+                              <br>
+                              <a class="nav-link active " href="/adminReview">Admin Review</a>
+                            <% } %>
+                      <% } %>
+                                  <a class="nav-link" href="/logout">Logout</a>
+                                  <% if(!currentUser.isAdministrator){ %> 
+                                  <a class="profileIcon nav-link" href="/profile">
+                                    <i class="profileIcon fa fa-user-circle-o ms-auto" style="font-size:36px;color:black"></i>
+                                  </a>
+                                  <% } %> 
+              <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="text-center mt-5">Cycles to be Reviewed</h1>
+    <br>
+  </div>
+
+  <% for(let hc of hostedCycles){ %>
+    
+    <div class="flex container product col-12 offset-3 mt-5 mb-5 ms-auto">
+      
+      <img class="product__image" src="<%= hc.image.url %>">
+      <h1 class="product__title"><%=hc.manufacturer%></h1>
+      <hr />
+      <span class="d-flex d-inline justify-content-center">
+        <form action="/adminReview/<%= hc._id %>/approve" method="post">
+          <button type="submit" class="btn-sm btn-success" >
+            Approve
+          </button>
+        </form>
+        <form action="/adminReview/<%= hc._id %>/reject" method="post" >
+          <button type="submit" class="btn-sm btn-danger ">
+            Reject
+          </button>
+        </form>
+      </span>
+      
+        
+    </div>
+    <%}%>
+        <script
+        src=
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity=
+  "sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"
+      ></script>
+
+</body>
+</html>

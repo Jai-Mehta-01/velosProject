@@ -1,0 +1,45 @@
+.cover-container{
+    max-width: 60vw;
+}
+
+body{
+    height: 100vh;
+    background-image: linear-gradient(rgba(249, 7, 7, 0), rgba(0, 0, 0, 0.5)),
+    url("../images/robert-bye-tG36rvCeqng-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+.brand-response{
+    transition: 500ms;
+}
+.brand-response:hover{
+    transform: scale(1.5);
+}
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover{
+    color: rgba(255,255,255,0.5);
+    border-bottom-color:rgba(255,255,255,0.5);
+}
+
+.nav-link.active {
+    color: white;
+    border-bottom-color:white;
+
+}
+.profileIcon {
+    border-bottom: none;
+    transition: 500ms;
+}
+.profileIcon:hover {
+    transform: scale(1.1);
+
+}

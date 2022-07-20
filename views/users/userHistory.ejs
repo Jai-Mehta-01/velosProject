@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=, initial-scale=1.0" />
+        <link rel="stylesheet" href="../stylesheet/activeOrdersStyling.css" />
+        <title>Active Orders</title>
+    </head>
+
+    <body>
+        <%- include('./partials/navbar') %>
+            <div class="outerContainer">
+                <h1>Past Orders</h1>
+                <% if(currentUser){ %>
+                    <% if(rented_history){ %>
+                        <% for(let orders of rented_history){ %>
+                            <% if(orders.returned==true){ %>
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="box">
+                                            <div class="content">
+                                                <h3>cycleID: <%= orders.cycleID %>
+                                                </h3>
+                                                <p>Start Date: <%= orders.startDate %>
+                                                </p>
+                                                <p>End Date: <%= orders.endDate %>
+                                                </p>
+                                                <p>Start Time: <%= orders.startTime %>
+                                                </p>
+                                                <p>End Time: <%= orders.endTime %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% } %>
+                                        <% } %>
+                                            <% } %>
+            </div>
+    </body>
+
+</html>

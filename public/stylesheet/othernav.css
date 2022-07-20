@@ -1,0 +1,35 @@
+.cover-container{
+    max-width: 60vw;
+}
+.brand-response{
+    transition: 500ms;
+}
+.brand-response:hover{
+    transform: scale(1.5);
+}
+.nav-link {
+    text-align: center;
+    padding: 0.25rem 0;
+    font-weight: 400;
+    color: black;
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover{
+    color:  black;
+    border-bottom-color:black
+}
+
+.nav-link.active {
+    color: black;
+    border-bottom-color:black;
+
+}
+.profileIcon {
+    border-bottom:none;
+    transition: 500ms;
+}
+.profileIcon:hover{
+    transform: scale(1.1);
+}

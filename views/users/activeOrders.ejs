@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=, initial-scale=1.0" />
+        <link rel="stylesheet" href="../stylesheet/activeOrdersStyling.css" />
+        <title>Active Orders</title>
+    </head>
+
+    <body>
+        <%- include('./partials/navbar') %>
+            <div class="outerContainer">
+                <% if(currentUser){ %>
+                <% if(!returned_all){ %>
+                <h1>Active Orders</h1>
+                    <% if(rented_history){ %>
+                        <% for(let orders of rented_history){ %>
+                            <% if(orders.returned==false){ %>
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="box">
+                                            <div class="content">
+                                                <h3>cycleID: <%= orders.cycleID %>
+                                                </h3>
+                                                <p>Start Date: <%= orders.startDate %>
+                                                </p>
+                                                <p>End Date: <%= orders.endDate %>
+                                                </p>
+                                                <p>Start Time: <%= orders.startTime %>
+                                                </p>
+                                                <p>End Time: <%= orders.endTime %>
+                                                </p>
+                                                <h3 class="totp" id="<%= orders.cycleID %>"></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% } %>
+                                        <% } %>
+                                        <% }else{%>
+                                        <h1>No Active Orders</h1>
+                                        <% } %>
+                                            <% } %>
+            </div>
+
+    </body>
+    <% if(rented_history){ %>
+        <script>
+            const otp = (userID, cycleID, secretKey) => {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", '/otp-api', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+
+                    "userID": userID,
+                    "cycleID": cycleID,
+                    "secretKey": secretKey
+                }));
+                xhr.onload = () => {
+                    document.getElementById(cycleID).innerHTML = (JSON.parse(xhr.responseText).totp);
+                    document.getElementById(cycleID + "-div").innerText =(JSON.parse(xhr.responseText).totp);
+                    console.log(cycleID + "-div");
+                }
+            }
+ 
+        <% for (let rh of rented_history) { %>
+                otp('<%=rh.userID%>', '<%=rh.cycleID%>', '<%=user.secretKey%>')
+                <% } %>
+        </script>
+        <% } %>
+
+</html>
